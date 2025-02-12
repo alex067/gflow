@@ -41,6 +41,7 @@ Creating a context requires you to provide the following:
 Grafana authentication is provided through your service account token. For roles and permissions, `editor` is required as the tool creates and deletes temporary resources.
 
 ## Future Development 
-Currently the only supported resource are dashboards. Future changes are to refactor the codebase to be modular, where any resource can be added by providing a schema. Additional resources like alerts and library panels will be added. 
-
-The tool only supports resource configs stored as json files. Working on adding yaml to support resources managed by K8s manifests.
+- [ ] Refactor codebase to be modular
+- [ ] Enable support for Alerts
+- [ ] Enable support for Library panels
+- [ ] Enable support for yaml
