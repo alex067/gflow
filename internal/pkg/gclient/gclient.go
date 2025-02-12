@@ -10,7 +10,9 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
+	"os/exec"
 	"os/signal"
+	"runtime"
 	"sync"
 	"syscall"
 	"time"
@@ -92,6 +94,23 @@ func (gc *GrafanaClient) generateRandomUid() string {
 		randUid[i] = letters[rand.Intn(len(letters))]
 	}
 	return string(randUid)
+}
+
+func openOnBrowser(url string) error {
+	var cmd string
+	var args []string
+
+	switch runtime.GOOS {
+	case "windows":
+		cmd = "cmd"
+		args = []string{"/c", "start"}
+	case "darwin":
+		cmd = "open"
+	default: // "linux", "freebsd", "openbsd", "netbsd"
+		cmd = "xdg-open"
+	}
+	args = append(args, url)
+	return exec.Command(cmd, args...).Start()
 }
 
 // Creates temp dashboard to watch over for changes
@@ -263,6 +282,7 @@ func (gc *GrafanaClient) StartWatchingDashboard(
 	defer ticker.Stop()
 
 	gc.Logger.Info("Watching...")
+	openOnBrowser(fmt.Sprintf("%s/d/%s", gc.Url, dbClient.Uid))
 
 	for {
 		select {
