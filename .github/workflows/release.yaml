@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  pull_request:
+    types: 
+      - closed 
+    branches:
+      - main
+
+jobs:
+  release:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Bump version and push tag
+        id: tagger
+        uses: anothrNick/github-tag-action@1.67.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          WITH_V: true
+          DEFAULT_BUMP: patch
+          RELEASE_BRANCHES: main
+    
+      - name: Display new version
+        run: |
+          echo "Created new version: ${{ steps.tagger.outputs.new_tag }}"
