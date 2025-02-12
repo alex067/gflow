@@ -5,10 +5,10 @@ Managing monitoring resources has never been easy. No one wants to deal with met
 
 By using gflow, all changes are made on a temporary version of that resource right on your Grafana instance. The changes are saved back to your local filesystem as a json file. From there, simply push the changes to your Github and let your IaC do the rest.
 
-This provides the following benefits:
-👀 Immediate feedback to changes
-🚀 Resource files automatically synced
-😃 Removes manual exporting of json files
+This provides the following benefits:  
+- 👀 Immediate feedback to changes
+- 🚀 Resource files automatically synced
+- 😃 Removes manual exporting of json files
 
 The tool is heavily inspired by **kubectl** and **grizzly**.
 
