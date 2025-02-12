@@ -137,7 +137,7 @@ func generateServiceAccountToken(t *testing.T) string {
 	t.Helper()
 
 	payload := map[string]interface{}{
-		"name":       "gsync-admin",
+		"name":       "gflow-admin",
 		"role":       "Admin",
 		"isDisabled": false,
 	}
@@ -174,7 +174,7 @@ func generateServiceAccountToken(t *testing.T) string {
 	}
 
 	tokenPayload := map[string]interface{}{
-		"name": "gsync-token",
+		"name": "gflow-token",
 		"role": "Admin",
 	}
 
