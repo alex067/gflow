@@ -48,7 +48,7 @@ type GConfigFile struct {
 }
 
 var ConfigFileName = "config.yaml"
-var ConfigDirectory = ".gsync"
+var ConfigDirectory = ".gflow"
 
 func (c *GConfigFile) GetAbsolutePath() (string, string, error) {
 	var err error

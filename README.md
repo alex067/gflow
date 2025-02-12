@@ -19,6 +19,8 @@ The tool expects you to store resource configs as json files in your local files
 
 Contexts allow you to switch between Grafana tenants and instances. The config is stored entirely on your local filesystem under `~/.gflow/config.yaml` and never sent anywhere else.
 
+Grafana authentication is provided through your service account token. For roles and permissions, `editor` is required as the tool creates and deletes temporary resources.
+
 ## Future Development 
 Currently the only supported resource are dashboards. Future changes are to refactor the codebase to be modular, where any resource can be added by providing a schema. Additional resources like alerts and library panels will be added. 
 
